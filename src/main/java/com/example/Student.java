@@ -27,19 +27,41 @@ public class Student {
 
     @Override
     public String toString() {
-        return "" ;
+
+        /*
+        "Name : Adithya\nUSN : 4KV16CS001\nSUBJECT1 : 70\nSUBJECT2 : 80\nSUBJECT3 : 60\nSUBJECT4 : 80\nSUBJECT5 : 75\nSUBJECT6 : 86\n";
+         */
+        StringBuilder result = new StringBuilder("Name : " + name +
+                "\nUSN : " + usn + "\n");
+
+        for(int i = 0; i< 6; i++) {
+            result.append(SUBJECT.values()[i]).append(" : ");
+            result.append(marks.get(i)).append("\n");
+        }
+
+        return result.toString();
     }
 
     public static float getAverageOfStudents(List<Student> studentList, SUBJECT subject) {
-        return 0;
+        int total = 0;
+
+        for(Student student : studentList) {
+            total += student.marks.get(subject.ordinal());
+        }
+
+        return (float)total / studentList.size();
     }
 
     public int getTotal() {
-        return 0;
+
+        int sum = 0;
+
+        for(int mark : marks) {
+            sum += mark;
+        }
+
+        return sum;
     }
 
-    public static void main(String[] args) {
-        System.out.println(SUBJECT.values()[0]);
-    }
 }
 
